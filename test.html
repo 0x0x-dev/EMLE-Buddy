@@ -6,6 +6,18 @@
     <title>Test Page - EMLE Buddy</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="icons/icon32.png">
+    <style>
+        /* Override for alert-text to match extension expectations */
+        .alert-text {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -73,7 +85,7 @@
             </div>
 
             <div id="QuestionMain" class="question-display">
-                <div class="alert alert-info" style="margin-bottom: 0;">
+                <div class="alert-text">
                     What is the capital of France?
                 </div>
 
@@ -210,7 +222,7 @@
             const questionMain = document.getElementById('QuestionMain');
             
             questionMain.innerHTML = `
-                <div class="alert alert-info" style="margin-bottom: 0;">
+                <div class="alert-text">
                     ${q.question}
                 </div>
                 <div id="QuestionOptions">
@@ -249,7 +261,7 @@
             
             // Load question text first
             questionMain.innerHTML = `
-                <div class="alert alert-info" style="margin-bottom: 0;">
+                <div class="alert-text">
                     What is the powerhouse of the cell?
                 </div>
                 <div id="QuestionOptions">
@@ -280,7 +292,7 @@
             
             // Load question text first
             questionMain.innerHTML = `
-                <div class="alert alert-info" style="margin-bottom: 0;">
+                <div class="alert-text">
                     Which organ is responsible for filtering blood?
                 </div>
                 <div id="QuestionOptions">
@@ -310,7 +322,7 @@
             const questionMain = document.getElementById('QuestionMain');
             
             questionMain.innerHTML = `
-                <div class="alert alert-info" style="margin-bottom: 0;">
+                <div class="alert-text">
                     This question has no choices! (Simulates parsing error)
                 </div>
                 <div id="QuestionOptions">
