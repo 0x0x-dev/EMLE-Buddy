@@ -3,162 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock Exam - Extension Test (Enhanced)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .alert-text {
-            background-color: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        table {
-            width: 100%;
-            background-color: white;
-            border-collapse: collapse;
-        }
-        table tr {
-            border-bottom: 1px solid #ddd;
-        }
-        table td {
-            padding: 12px;
-        }
-        table td:first-child {
-            width: 50px;
-            text-align: center;
-        }
-        .controls {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        button.danger {
-            background-color: #dc3545;
-        }
-        button.danger:hover {
-            background-color: #c82333;
-        }
-        button.warning {
-            background-color: #ffc107;
-            color: #000;
-        }
-        button.warning:hover {
-            background-color: #e0a800;
-        }
-        .info {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .loading {
-            background-color: #fff;
-            padding: 20px;
-            text-align: center;
-            color: #999;
-            font-style: italic;
-        }
-        .section {
-            margin-bottom: 15px;
-        }
-        .section h4 {
-            margin: 5px 0;
-            color: #333;
-        }
-    </style>
+    <title>Test Page - EMLE Buddy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="icons/icon32.png">
 </head>
 <body>
-    <div class="info">
-        <h2>🧪 Enhanced Extension Test Page</h2>
-        <p>This page simulates various edge cases from <code>emle.academy</code></p>
-        <p><strong>Test Scenarios:</strong></p>
-        <ul>
-            <li>✅ Normal questions</li>
-            <li>⏱️ Delayed loading (choices load after question)</li>
-            <li>📝 Very long questions (stress test)</li>
-            <li>❌ Missing choices (parsing error simulation)</li>
-            <li>⚡ Rapid question changes</li>
-            <li>🔄 Duplicate questions</li>
-        </ul>
-        <p><strong>Instructions:</strong> Open console (F12) and check Telegram for messages!</p>
-    </div>
-
-    <div id="QuestionMain">
-        <div class="alert-text">
-            What is the capital of France?
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="icons/icon48.png" alt="EMLE Buddy Logo" width="32" height="32">
+                    <span>EMLE Buddy</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#features">Features</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </nav>
         </div>
+    </header>
 
-        <div id="QuestionOptions">
-            <table>
-                <tr>
-                    <td>A</td>
-                    <td>London</td>
-                </tr>
-                <tr>
-                    <td>B</td>
-                    <td>Paris</td>
-                </tr>
-                <tr>
-                    <td>C</td>
-                    <td>Berlin</td>
-                </tr>
-                <tr>
-                    <td>D</td>
-                    <td>Madrid</td>
-                </tr>
-            </table>
-        </div>
-    </div>
+    <main>
+        <section class="hero" style="padding: 40px 0;">
+            <div class="container">
+                <h1>Extension Test Page</h1>
+                <p>Simulate various edge cases to verify the extension's behavior.</p>
+            </div>
+        </section>
 
-    <div class="controls">
-        <h3>🎯 Test Controls</h3>
-        
-        <div class="section">
-            <h4>Normal Questions:</h4>
-            <button onclick="loadQuestion1()">Load Question 1 (Geography)</button>
-            <button onclick="loadQuestion2()">Load Question 2 (Science)</button>
-            <button onclick="loadQuestion3()">Load Question 3 (Math)</button>
-        </div>
+        <div class="container">
+            <div class="alert alert-info">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <div>
+                    <strong>Test Scenarios</strong>
+                    <ul class="test-scenarios-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Normal questions
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Delayed loading
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            Long questions
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                            Missing choices
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            Rapid changes
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                            Duplicates
+                        </li>
+                    </ul>
+                    <div style="margin-top: 12px; font-size: 13px; opacity: 0.8;">
+                        Instructions: Open console (F12) and check Telegram for messages!
+                    </div>
+                </div>
+            </div>
 
-        <div class="section">
-            <h4>Edge Cases:</h4>
-            <button class="warning" onclick="loadLongQuestion()">📝 Very Long Question</button>
-            <button class="warning" onclick="loadDelayedChoices()">⏱️ Delayed Choices (2s)</button>
-            <button class="warning" onclick="loadDelayedChoicesSlow()">⏱️ Delayed Choices (5s)</button>
-            <button class="danger" onclick="loadQuestionNoChoices()">❌ Question Without Choices</button>
-        </div>
+            <div id="QuestionMain" class="question-display">
+                <div class="alert alert-info" style="margin-bottom: 0;">
+                    What is the capital of France?
+                </div>
 
-        <div class="section">
-            <h4>Stress Tests:</h4>
-            <button class="warning" onclick="rapidQuestionChange()">⚡ Rapid Change (5 questions)</button>
-            <button onclick="loadDuplicate()">🔄 Load Duplicate Question</button>
-            <button class="danger" onclick="removeQuestion()">🗑️ Remove Question</button>
+                <div id="QuestionOptions">
+                    <table class="options-table">
+                        <tr>
+                            <td>A</td>
+                            <td>London</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>Paris</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>Berlin</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>Madrid</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="test-controls">
+                <div class="control-section">
+                    <h4>Normal Questions</h4>
+                    <div class="button-grid">
+                        <button class="btn btn-secondary" onclick="loadQuestion1()">
+                            Geography
+                        </button>
+                        <button class="btn btn-secondary" onclick="loadQuestion2()">
+                            Science
+                        </button>
+                        <button class="btn btn-secondary" onclick="loadQuestion3()">
+                            Math
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h4>Edge Cases</h4>
+                    <div class="button-grid">
+                        <button class="btn btn-warning" onclick="loadLongQuestion()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            Very Long Question
+                        </button>
+                        <button class="btn btn-warning" onclick="loadDelayedChoices()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Delayed (2s)
+                        </button>
+                        <button class="btn btn-warning" onclick="loadDelayedChoicesSlow()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Delayed (5s)
+                        </button>
+                        <button class="btn btn-danger" onclick="loadQuestionNoChoices()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                            No Choices
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h4>Stress Tests</h4>
+                    <div class="button-grid">
+                        <button class="btn btn-warning" onclick="rapidQuestionChange()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            Rapid Change
+                        </button>
+                        <button class="btn btn-secondary" onclick="loadDuplicate()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                            Duplicate
+                        </button>
+                        <button class="btn btn-danger" onclick="removeQuestion()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EMLE Buddy. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         const questions = [
@@ -206,11 +210,11 @@
             const questionMain = document.getElementById('QuestionMain');
             
             questionMain.innerHTML = `
-                <div class="alert-text">
+                <div class="alert alert-info" style="margin-bottom: 0;">
                     ${q.question}
                 </div>
                 <div id="QuestionOptions">
-                    <table>
+                    <table class="options-table">
                         ${q.choices.map(choice => `
                             <tr>
                                 <td>${choice.letter}</td>
@@ -245,11 +249,14 @@
             
             // Load question text first
             questionMain.innerHTML = `
-                <div class="alert-text">
+                <div class="alert alert-info" style="margin-bottom: 0;">
                     What is the powerhouse of the cell?
                 </div>
                 <div id="QuestionOptions">
-                    <div class="loading">Loading choices...</div>
+                    <div class="alert alert-warning" style="margin-top: 16px;">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Loading choices...
+                    </div>
                 </div>
             `;
             console.log('⏱️ Question loaded, choices will appear in 2 seconds...');
@@ -257,7 +264,7 @@
             // Load choices after 2 seconds
             setTimeout(() => {
                 document.getElementById('QuestionOptions').innerHTML = `
-                    <table>
+                    <table class="options-table">
                         <tr><td>A</td><td>Nucleus</td></tr>
                         <tr><td>B</td><td>Mitochondria</td></tr>
                         <tr><td>C</td><td>Ribosome</td></tr>
@@ -273,11 +280,14 @@
             
             // Load question text first
             questionMain.innerHTML = `
-                <div class="alert-text">
+                <div class="alert alert-info" style="margin-bottom: 0;">
                     Which organ is responsible for filtering blood?
                 </div>
                 <div id="QuestionOptions">
-                    <div class="loading">Loading choices... (this is taking a while)</div>
+                    <div class="alert alert-warning" style="margin-top: 16px;">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Loading choices... (this is taking a while)
+                    </div>
                 </div>
             `;
             console.log('⏱️ Question loaded, choices will appear in 5 seconds...');
@@ -285,7 +295,7 @@
             // Load choices after 5 seconds
             setTimeout(() => {
                 document.getElementById('QuestionOptions').innerHTML = `
-                    <table>
+                    <table class="options-table">
                         <tr><td>A</td><td>Liver</td></tr>
                         <tr><td>B</td><td>Kidney</td></tr>
                         <tr><td>C</td><td>Heart</td></tr>
@@ -300,11 +310,14 @@
             const questionMain = document.getElementById('QuestionMain');
             
             questionMain.innerHTML = `
-                <div class="alert-text">
+                <div class="alert alert-info" style="margin-bottom: 0;">
                     This question has no choices! (Simulates parsing error)
                 </div>
                 <div id="QuestionOptions">
-                    <p style="padding: 20px; color: #999;">No choices available</p>
+                    <div class="alert alert-danger" style="margin-top: 16px;">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        No choices available
+                    </div>
                 </div>
             `;
             console.log('❌ Loaded question WITHOUT choices (should trigger error handling)');
@@ -331,7 +344,11 @@
 
         function removeQuestion() {
             const questionMain = document.getElementById('QuestionMain');
-            questionMain.innerHTML = '<p style="padding: 20px; text-align: center; color: #999;">No question loaded. Click a button to load a question.</p>';
+            questionMain.innerHTML = `
+                <div class="alert alert-secondary" style="text-align: center; color: var(--text-secondary);">
+                    No question loaded. Click a button to load a question.
+                </div>
+            `;
             console.log('🗑️ Question removed');
         }
     </script>
