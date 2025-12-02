@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Exam - Extension Test (Enhanced)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .alert-text {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            background-color: white;
+            border-collapse: collapse;
+        }
+        table tr {
+            border-bottom: 1px solid #ddd;
+        }
+        table td {
+            padding: 12px;
+        }
+        table td:first-child {
+            width: 50px;
+            text-align: center;
+        }
+        .controls {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button.danger {
+            background-color: #dc3545;
+        }
+        button.danger:hover {
+            background-color: #c82333;
+        }
+        button.warning {
+            background-color: #ffc107;
+            color: #000;
+        }
+        button.warning:hover {
+            background-color: #e0a800;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .loading {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .section h4 {
+            margin: 5px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>🧪 Enhanced Extension Test Page</h2>
+        <p>This page simulates various edge cases from <code>emle.academy</code></p>
+        <p><strong>Test Scenarios:</strong></p>
+        <ul>
+            <li>✅ Normal questions</li>
+            <li>⏱️ Delayed loading (choices load after question)</li>
+            <li>📝 Very long questions (stress test)</li>
+            <li>❌ Missing choices (parsing error simulation)</li>
+            <li>⚡ Rapid question changes</li>
+            <li>🔄 Duplicate questions</li>
+        </ul>
+        <p><strong>Instructions:</strong> Open console (F12) and check Telegram for messages!</p>
+    </div>
+
+    <div id="QuestionMain">
+        <div class="alert-text">
+            What is the capital of France?
+        </div>
+
+        <div id="QuestionOptions">
+            <table>
+                <tr>
+                    <td>A</td>
+                    <td>London</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>Berlin</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>Madrid</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="controls">
+        <h3>🎯 Test Controls</h3>
+        
+        <div class="section">
+            <h4>Normal Questions:</h4>
+            <button onclick="loadQuestion1()">Load Question 1 (Geography)</button>
+            <button onclick="loadQuestion2()">Load Question 2 (Science)</button>
+            <button onclick="loadQuestion3()">Load Question 3 (Math)</button>
+        </div>
+
+        <div class="section">
+            <h4>Edge Cases:</h4>
+            <button class="warning" onclick="loadLongQuestion()">📝 Very Long Question</button>
+            <button class="warning" onclick="loadDelayedChoices()">⏱️ Delayed Choices (2s)</button>
+            <button class="warning" onclick="loadDelayedChoicesSlow()">⏱️ Delayed Choices (5s)</button>
+            <button class="danger" onclick="loadQuestionNoChoices()">❌ Question Without Choices</button>
+        </div>
+
+        <div class="section">
+            <h4>Stress Tests:</h4>
+            <button class="warning" onclick="rapidQuestionChange()">⚡ Rapid Change (5 questions)</button>
+            <button onclick="loadDuplicate()">🔄 Load Duplicate Question</button>
+            <button class="danger" onclick="removeQuestion()">🗑️ Remove Question</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                choices: [
+                    { letter: "A", text: "London" },
+                    { letter: "B", text: "Paris" },
+                    { letter: "C", text: "Berlin" },
+                    { letter: "D", text: "Madrid" }
+                ]
+            },
+            {
+                question: "What is the chemical symbol for water?",
+                choices: [
+                    { letter: "A", text: "O2" },
+                    { letter: "B", text: "H2O" },
+                    { letter: "C", text: "CO2" },
+                    { letter: "D", text: "NaCl" }
+                ]
+            },
+            {
+                question: "What is 15 × 8?",
+                choices: [
+                    { letter: "A", text: "100" },
+                    { letter: "B", text: "110" },
+                    { letter: "C", text: "120" },
+                    { letter: "D", text: "130" }
+                ]
+            },
+            {
+                question: "A 67-year-old man with a history of chronic obstructive pulmonary disease (COPD), hypertension, and type 2 diabetes mellitus presents to the emergency department with acute onset of severe dyspnea, productive cough with yellowish-green sputum, and fever of 38.9°C (102°F). He reports that his symptoms began 3 days ago and have progressively worsened despite using his home inhalers. On examination, he appears distressed, with a respiratory rate of 32 breaths/min, heart rate of 110 bpm, blood pressure of 145/90 mmHg, and oxygen saturation of 88% on room air. Auscultation reveals decreased breath sounds bilaterally with diffuse wheezing and scattered crackles. Chest X-ray shows hyperinflation and a new right lower lobe infiltrate. Laboratory results reveal leukocytosis with a white blood cell count of 15,000/μL and elevated C-reactive protein. Arterial blood gas on room air shows pH 7.32, PaCO2 58 mmHg, PaO2 55 mmHg, and HCO3- 28 mEq/L. Which of the following is the most appropriate next step in the management of this patient?",
+                choices: [
+                    { letter: "1", text: "Administer high-flow oxygen via non-rebreather mask to achieve oxygen saturation >95%" },
+                    { letter: "2", text: "Initiate non-invasive positive pressure ventilation (NIPPV) with supplemental oxygen" },
+                    { letter: "3", text: "Administer nebulized short-acting beta-agonist and anticholinergic agents with controlled oxygen therapy" },
+                    { letter: "4", text: "Proceed with immediate endotracheal intubation and mechanical ventilation" },
+                    { letter: "5", text: "Administer intravenous corticosteroids and observe for 2 hours before further intervention" }
+                ]
+            }
+        ];
+
+        function loadQuestion(index) {
+            const q = questions[index];
+            const questionMain = document.getElementById('QuestionMain');
+            
+            questionMain.innerHTML = `
+                <div class="alert-text">
+                    ${q.question}
+                </div>
+                <div id="QuestionOptions">
+                    <table>
+                        ${q.choices.map(choice => `
+                            <tr>
+                                <td>${choice.letter}</td>
+                                <td>${choice.text}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                </div>
+            `;
+            console.log(`✅ Loaded question ${index + 1}`);
+        }
+
+        function loadQuestion1() {
+            loadQuestion(0);
+        }
+
+        function loadQuestion2() {
+            loadQuestion(1);
+        }
+
+        function loadQuestion3() {
+            loadQuestion(2);
+        }
+
+        function loadLongQuestion() {
+            loadQuestion(3);
+            console.log('📝 Loaded very long medical question');
+        }
+
+        function loadDelayedChoices() {
+            const questionMain = document.getElementById('QuestionMain');
+            
+            // Load question text first
+            questionMain.innerHTML = `
+                <div class="alert-text">
+                    What is the powerhouse of the cell?
+                </div>
+                <div id="QuestionOptions">
+                    <div class="loading">Loading choices...</div>
+                </div>
+            `;
+            console.log('⏱️ Question loaded, choices will appear in 2 seconds...');
+            
+            // Load choices after 2 seconds
+            setTimeout(() => {
+                document.getElementById('QuestionOptions').innerHTML = `
+                    <table>
+                        <tr><td>A</td><td>Nucleus</td></tr>
+                        <tr><td>B</td><td>Mitochondria</td></tr>
+                        <tr><td>C</td><td>Ribosome</td></tr>
+                        <tr><td>D</td><td>Golgi apparatus</td></tr>
+                    </table>
+                `;
+                console.log('✅ Choices loaded after 2s delay');
+            }, 2000);
+        }
+
+        function loadDelayedChoicesSlow() {
+            const questionMain = document.getElementById('QuestionMain');
+            
+            // Load question text first
+            questionMain.innerHTML = `
+                <div class="alert-text">
+                    Which organ is responsible for filtering blood?
+                </div>
+                <div id="QuestionOptions">
+                    <div class="loading">Loading choices... (this is taking a while)</div>
+                </div>
+            `;
+            console.log('⏱️ Question loaded, choices will appear in 5 seconds...');
+            
+            // Load choices after 5 seconds
+            setTimeout(() => {
+                document.getElementById('QuestionOptions').innerHTML = `
+                    <table>
+                        <tr><td>A</td><td>Liver</td></tr>
+                        <tr><td>B</td><td>Kidney</td></tr>
+                        <tr><td>C</td><td>Heart</td></tr>
+                        <tr><td>D</td><td>Lungs</td></tr>
+                    </table>
+                `;
+                console.log('✅ Choices loaded after 5s delay');
+            }, 5000);
+        }
+
+        function loadQuestionNoChoices() {
+            const questionMain = document.getElementById('QuestionMain');
+            
+            questionMain.innerHTML = `
+                <div class="alert-text">
+                    This question has no choices! (Simulates parsing error)
+                </div>
+                <div id="QuestionOptions">
+                    <p style="padding: 20px; color: #999;">No choices available</p>
+                </div>
+            `;
+            console.log('❌ Loaded question WITHOUT choices (should trigger error handling)');
+        }
+
+        function rapidQuestionChange() {
+            console.log('⚡ Starting rapid question change test...');
+            let count = 0;
+            const interval = setInterval(() => {
+                loadQuestion(count % 3);
+                count++;
+                console.log(`⚡ Rapid change ${count}/5`);
+                if (count >= 5) {
+                    clearInterval(interval);
+                    console.log('✅ Rapid change test complete');
+                }
+            }, 500); // Change question every 500ms
+        }
+
+        function loadDuplicate() {
+            loadQuestion(0); // Load the same question again
+            console.log('🔄 Loaded duplicate question (should be ignored by extension)');
+        }
+
+        function removeQuestion() {
+            const questionMain = document.getElementById('QuestionMain');
+            questionMain.innerHTML = '<p style="padding: 20px; text-align: center; color: #999;">No question loaded. Click a button to load a question.</p>';
+            console.log('🗑️ Question removed');
+        }
+    </script>
+</body>
+</html>
